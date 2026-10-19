@@ -9,7 +9,7 @@ namespace Students.DataAccessLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Берем строку из единого конфигурационного класса
+        
             optionsBuilder.UseSqlServer(DatabaseConfig.ConnectionString);
         }
     }
