@@ -6,7 +6,7 @@ using Students.Model;
 
 namespace Students.BusinessLogic
 {
-    // DTO (Data Transfer Object) изолирует View от Model
+   
     public class Student1
     {
         public int Id { get; set; }
@@ -14,7 +14,6 @@ namespace Students.BusinessLogic
         public string LastName { get; set; }
         public string Group { get; set; }
     }
-
     public class StudentService
     {
         private IRepository<Student> _repository;
@@ -22,10 +21,10 @@ namespace Students.BusinessLogic
 
         public StudentService()
         {
-            _repository = new EFRepository(); // По умолчанию
+            _repository = new EFRepository(); 
         }
 
-        // Инициализация БД вынесена сюда, чтобы View не знал о DAL
+       
         public void InitializeDatabase()
         {
             using var db = new AppDbContext();
@@ -35,7 +34,7 @@ namespace Students.BusinessLogic
         public void ToggleRepository()
         {
             _isUsingEf = !_isUsingEf;
-            // Гарантируем использование той же строки подключения, что и у EF Core
+          
             _repository = _isUsingEf
                 ? new EFRepository()
                 : new DapperRepository(DatabaseConfig.ConnectionString);
@@ -43,7 +42,7 @@ namespace Students.BusinessLogic
 
         public string GetCurrentProviderName() => _isUsingEf ? "EF Core" : "Dapper";
 
-        // Возвращаем DTO, а не модель базы данных
+        
         public List<Student1> GetAll()
         {
             return _repository.ReadAll().Select(s => new Student1

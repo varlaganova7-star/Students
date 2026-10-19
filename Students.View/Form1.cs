@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using Students.BusinessLogic; // “олько BusinessLogic!
+using Students.BusinessLogic; 
 
 namespace Students.View
 {
@@ -27,7 +27,7 @@ namespace Students.View
             try
             {
                 dataGridViewStudents.DataSource = null;
-                // DataGridView автоматически отобразит свойства StudentDto (Id, FirstName, LastName, Group)
+              
                 dataGridViewStudents.DataSource = _service.GetAll();
                 UpdateTitle();
             }

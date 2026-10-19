@@ -11,7 +11,7 @@ namespace Students.View
         {
             ApplicationConfiguration.Initialize();
 
-            // Инициализируем БД через бизнес-логику (View не знает про AppDbContext)
+          
             var service = new StudentService();
             service.InitializeDatabase();
 

@@ -9,22 +9,19 @@ namespace Students.View.ConsoleApp
 
         static void Main(string[] args)
         {
-            // Инициализируем БД через бизнес-логику (та же БД, что и у WinForms!)
+          
             _service.InitializeDatabase();
 
             bool exit = false;
             while (!exit)
             {
                 Console.Clear();
-                Console.WriteLine("========================================");
                 Console.WriteLine($"   СТУДЕНТЫ | Режим: {_service.GetCurrentProviderName()}");
-                Console.WriteLine("========================================");
                 Console.WriteLine("1. Показать всех студентов");
                 Console.WriteLine("2. Добавить студента");
                 Console.WriteLine("3. Удалить студента");
-                Console.WriteLine("4. Переключить провайдер (EF Core <-> Dapper)");
+                Console.WriteLine("4. Переключить провайдер");
                 Console.WriteLine("5. Выход");
-                Console.WriteLine("----------------------------------------");
                 Console.Write("Выберите пункт: ");
 
                 string choice = Console.ReadLine();
@@ -68,7 +65,7 @@ namespace Students.View.ConsoleApp
         private static void ShowAllStudents()
         {
             Console.Clear();
-            Console.WriteLine("\n--- Список студентов ---");
+            Console.WriteLine("\n Список студентов");
             var students = _service.GetAll();
 
             if (students.Count == 0)
@@ -91,7 +88,7 @@ namespace Students.View.ConsoleApp
         private static void AddStudent()
         {
             Console.Clear();
-            Console.WriteLine("\n--- Добавление студента ---");
+            Console.WriteLine("\nДобавление студента");
 
             Console.Write("Имя: ");
             string firstName = Console.ReadLine()?.Trim() ?? "";
@@ -113,7 +110,7 @@ namespace Students.View.ConsoleApp
         private static void DeleteStudent()
         {
             Console.Clear();
-            Console.WriteLine("\n--- Удаление студента ---");
+            Console.WriteLine("\n Удаление студента ");
             Console.Write("Введите Id студента для удаления: ");
 
             if (int.TryParse(Console.ReadLine(), out int id))
@@ -143,7 +140,7 @@ namespace Students.View.ConsoleApp
 
         private static void Pause()
         {
-            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+            Console.WriteLine("\nНажмите любую клавишу для продолжения");
             Console.ReadKey();
         }
     }

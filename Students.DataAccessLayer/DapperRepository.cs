@@ -22,7 +22,7 @@ namespace Students.DataAccessLayer
         public void Create(Student item)
         {
             using var db = CreateConnection();
-            // ИСПРАВЛЕНО: Position заменен на [Group]. Квадратные скобки обязательны, так как GROUP - ключевое слово SQL.
+         
             db.Execute(@"INSERT INTO Students (FirstName, LastName, [Group]) 
                          VALUES (@FirstName, @LastName, @Group)", item);
         }
